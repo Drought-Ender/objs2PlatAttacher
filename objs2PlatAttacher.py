@@ -663,7 +663,7 @@ class ObjFile:
             ca = c - a
             ac = a - c
 
-            cross_norm = -ab.cross_product(ac)
+            cross_norm = ab.cross_product(ac)
             if cross_norm.x == cross_norm.y == cross_norm.z:
                 tan1 = tan2 = tan3 = norm = Vector3f(0.0, 0.0, 0.0)
             else:
