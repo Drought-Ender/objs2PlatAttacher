@@ -135,14 +135,14 @@ class Vector3i:
         self.z = args[2]
 
     def read(self, stream:BytesIO):
-        self.x = struct.unpack(">i", stream.read(4))[0]
-        self.y = struct.unpack(">i", stream.read(4))[0]
         self.z = struct.unpack(">i", stream.read(4))[0]
+        self.y = struct.unpack(">i", stream.read(4))[0]
+        self.x = struct.unpack(">i", stream.read(4))[0]
 
     def write(self, stream:BytesIO):
-        stream.write(struct.pack(">i", self.x))
-        stream.write(struct.pack(">i", self.y))
         stream.write(struct.pack(">i", self.z))
+        stream.write(struct.pack(">i", self.y))
+        stream.write(struct.pack(">i", self.x))
 
     def __str__(self):
         return f"{self.x} {self.y} {self.z}"
@@ -663,7 +663,7 @@ class ObjFile:
             ca = c - a
             ac = a - c
 
-            cross_norm = ab.cross_product(ac)
+            cross_norm = -ab.cross_product(ac)
             if cross_norm.x == cross_norm.y == cross_norm.z:
                 tan1 = tan2 = tan3 = norm = Vector3f(0.0, 0.0, 0.0)
             else:
