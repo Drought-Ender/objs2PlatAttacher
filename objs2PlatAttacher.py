@@ -596,7 +596,7 @@ def triToPlane(points:list[Vector3f, Vector3f, Vector3f]) -> Plane:
     c = points[2]
 
     ab = a - b
-    cb = c - b
+    cb = b - c
 
     n = ab.cross_product(cb)
     n = n.normalized()
